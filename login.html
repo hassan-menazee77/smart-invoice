@@ -240,6 +240,9 @@
         await loadScript('js/utils.js', 'utils.js');
         await loadScript('js/db.js', 'db.js');
         await loadScript('js/auth.js', 'auth.js');
+        if (window.Auth && typeof window.Auth.init === 'function') {
+          await window.Auth.init();
+        }
       } catch(e) {
         console.error("الملفات غير موجودة على سيرفر جيت هاب نهائياً", e);
       }

@@ -30,6 +30,7 @@ var Auth = {
     
     if (typeof DB !== 'undefined') {
       await DB.ensureInit();
+      await DB.seed();
     }
 
     // Mark DB as ready
