@@ -218,9 +218,33 @@
     </div>
   </div>
 
-  <script src="js/utils.js?v=3"></script>
-  <script src="js/db.js?v=3"></script>
-  <script src="js/auth.js?v=3"></script>
+  <!-- Smart Script Loader: Bypasses Cache & Fixes GitHub Path Errors -->
+  <script>
+    async function loadScript(path, fallbackPath) {
+      return new Promise((resolve, reject) => {
+        let s = document.createElement('script');
+        s.src = path + '?t=' + Date.now(); // إجبار المتصفح على جلب أحدث نسخة وتخطي الكاش
+        s.onload = resolve;
+        s.onerror = () => {
+          let s2 = document.createElement('script');
+          s2.src = fallbackPath + '?t=' + Date.now(); // البحث خارج مجلد js تلقائياً
+          s2.onload = resolve;
+          s2.onerror = reject;
+          document.body.appendChild(s2);
+        };
+        document.body.appendChild(s);
+      });
+    }
+    (async function initApp() {
+      try {
+        await loadScript('js/utils.js', 'utils.js');
+        await loadScript('js/db.js', 'db.js');
+        await loadScript('js/auth.js', 'auth.js');
+      } catch(e) {
+        console.error("الملفات غير موجودة على سيرفر جيت هاب نهائياً", e);
+      }
+    })();
+  </script>
   <script>
 // Setup dark mode immediately for login page
     (function setupTheme() {
