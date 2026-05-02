@@ -35,6 +35,60 @@
   --radius-2xl: 1.5rem;
 }
 
+body {
+  background: white;
+  color: #111827;
+}
+
+.dark body {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+.dark .bg-gray-200 {
+  background-color: #374151 !important;
+}
+
+.dark .bg-gray-300 {
+  background-color: #4b5563 !important;
+}
+
+.dark .bg-gray-400 {
+  background-color: #64748b !important;
+}
+
+.dark .text-black {
+  color: #f8fafc !important;
+}
+
+.dark .border-gray-100 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.dark .border-gray-400 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
 .dark {
   --glass-bg: rgba(30, 41, 59, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);

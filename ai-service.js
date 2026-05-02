@@ -1,4 +1,4 @@
-// AI يفهم النص ويعمل فاتورة باستخدام Google Gemini
+// AI parses text and generates an invoice using Google Gemini
 async function createInvoiceFromText(text) {
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
@@ -32,7 +32,7 @@ Text: "${text}"`
 
   const data = await response.json();
   
-  // Gemini بيرجع النتيجة في text جوه parts
+  // Gemini returns the result inside text within parts
   const resultText = data.candidates[0].content.parts[0].text;
   const result = JSON.parse(resultText);
   
@@ -40,7 +40,7 @@ Text: "${text}"`
   return result;
 }
 
-// اقتراح سعر ذكي
+// Smart pricing suggestion
 async function getPricingSuggestion(service, market) {
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
@@ -68,7 +68,7 @@ async function getPricingSuggestion(service, market) {
   return JSON.parse(resultText);
 }
 
-// كتابة إيميل متابعة
+// Generate follow-up email
 async function generateFollowUpEmail(clientName, amount, dueDate) {
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
